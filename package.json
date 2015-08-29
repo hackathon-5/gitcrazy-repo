@@ -1,0 +1,37 @@
+{
+  "name": "GitCrazy",
+  "version": "0.0.1",
+  "private": "true",
+  "authors": [
+    "Kevin Collins"
+  ],
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "angular-resource": "^1.3.18",
+    "bcrypt-nodejs": "latest",
+    "body-parser": "~1.4.2",
+    "connect-flash": "~0.1.1",
+    "cookie-parser": "~1.0.0",
+    "dotenv": "^0.4.0",
+    "express": "~4.5.1",
+    "express-session": "~1.0.0",
+    "method-override": "~2.0.2",
+    "morgan": "~1.0.0",
+    "node-mysql": "^0.4.2",
+    "nodemon": "~1.2.1",
+    "underscore": "~1.7.0"
+  },
+  "devDependencies": {
+    "grunt": "latest",
+    "grunt-concurrent": "^1.0.0",
+    "grunt-contrib-concat": "^0.5.0",
+    "grunt-contrib-connect": "^0.9.0",
+    "grunt-contrib-jshint": "latest",
+    "grunt-contrib-watch": "latest",
+    "grunt-node-inspector": "^0.1.5",
+    "grunt-nodemon": "^0.3.0",
+    "jshint-stylish": "^1.0.0"
+  }
+}
