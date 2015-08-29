@@ -5,6 +5,7 @@ var database = require('./db');
 var nano = require('nano')(config.db.url);
 nano.db.create(config.db.name);
 var db = nano.use(config.db.name);
+var twilio = require('./twilio');
 
 module.exports = function(app) {
 
@@ -43,6 +44,11 @@ module.exports = function(app) {
   app.get('*', function(req, res) {
     res.sendfile('./app/index.html');
   });
+
+  app.post('/api/sendText', function(req, res) {
+    twilio.sendMessage();
+    res.send(req.body);
+  })
 };
 
 
