@@ -11,5 +11,7 @@ module.exports = {
   db: {
     name: process.env.DB_NAME || 'git_crazy',
     url: process.env.DB_URL || 'http://localhost:5984'
-  }
+  },
+  port: process.env.PORT || 3000
+
 }
