@@ -1,1 +1,11 @@
 <div> This is a test</div>
+<label>Select a Category</label>
+<select name='repeatSelect' ng-model="category">
+  <option ng-repeat="option in options" value="{{option.id}}">{{option.name}}</option>
+</select>
+<br/>
+<label>Event Name</label>
+<input type='text' name='eventName' ng-model="name">
+<br/>
+
+<input type="submit" ng-click="submit()">
