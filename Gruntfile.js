@@ -119,7 +119,7 @@ module.exports = function(grunt) {
       },
       dev: {
         files: devFiles,
-        tasks: ['jshint', 'concat']
+        tasks: ['concat']
       } 
     }
   });
@@ -132,5 +132,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   
   grunt.registerTask('server',  ['concurrent', 'nodemon', 'watch']);
-  grunt.registerTask('default', ['jshint', 'concat']);
+  grunt.registerTask('default', ['concat']);
 };

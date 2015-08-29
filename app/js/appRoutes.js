@@ -7,6 +7,7 @@ angular.module('appRoutes', [])
       })
       .when('/', {
         templateUrl: 'views/index.html',
+        controller: 'IndexController'
       });
 
     $locationProvider.html5Mode(true);
