@@ -95,7 +95,12 @@ angular.module('HomeController', [])
         var temp = res.data.doc;
         console.log("Category: ", $scope.category);
         temp.category[$scope.category].size += 1;
-        temp.category[$scope.category].events.push({'name': $scope.name, 'value': 1});
+        if(temp.category[$scope.category].events){
+          temp.category[$scope.category].events.push({'name': $scope.name, 'value': 1});
+        }
+        else {
+          temp.category[$scope.category].events
+        }
         console.log(temp);
         $http.put('/api/update', temp)
           .success(function(data) {

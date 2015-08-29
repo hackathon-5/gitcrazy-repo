@@ -59,7 +59,7 @@
 
     <div class="pre-loader">
         <div class="load-con">
-            <img src="img/berry/logo.png" class="animated fadeInDown" alt="">
+            <img src="img/ttt-heart1.gif" class="animated fadeInDown" alt="">
             <div class="spinner">
               <div class="bounce1"></div>
               <div class="bounce2"></div>
@@ -113,6 +113,7 @@
 
     <div class="wrapper" ng-controller="HomeController">
 
+        <div class="welcome">Hi Blossom!  Welcome back...  What have you been up to lately?</div>
         <!--Graph-->
         <section id="home">
             <div class="container">
@@ -164,17 +165,15 @@
                     <p>Add an event to one of your categories!</p>
                 </div>
 
-                <div> This is a test</div>
+                <!-- <div> This is a test</div>
                 <label>Select a Category</label>
-                <select name='repeatSelect' ng-model="category">
-                  <option ng-repeat="option in options" value="{{option.id}}">{{option.name}}</option>
-                </select>
+
                 <br/>
                 <label>Event Name</label>
                 <input type='text' name='eventName' ng-model="name">
                 <br/>
 
-                <input type="submit" ng-click="submit()">
+                <input type="submit" ng-click="submit()"> -->
 
 
                 <div class="row">
@@ -183,15 +182,20 @@
                             <div class="col-md-8 col-sm-8 scrollpoint sp-effect1">
                                 <form role="form">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Your name">
+                                        <!-- <input type="text" class="form-control" placeholder="Your name"> -->
+                                        <select name='repeatSelect' ng-model="category" class="form-control">
+                                          <option value="">Select a Category</option>
+                                          <option ng-repeat="option in options" value="{{option.id}}">{{option.name}}</option>
+                                        </select>
                                     </div>
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                         <input type="email" class="form-control" placeholder="Your email">
-                                    </div>
+                                        <input type="text" class="form-control" placeholder="Event Name">
+                                    </div> -->
                                     <div class="form-group">
-                                        <textarea cols="30" rows="10" class="form-control" placeholder="Your message"></textarea>
+                                        <textarea cols="30" rows="10" class="form-control" placeholder="Event Name" name='eventName' ng-model="name"></textarea>
                                     </div>
-                                    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                                    <button type="submit" class="btn btn-primary btn-lg" ng-click="submit()">Submit</button>
                                 </form>
                             </div>
                         </div>
@@ -205,11 +209,6 @@
                 <a href="#" class="scrollpoint sp-effect3">
                     <img src="img/ttt-heart1.gif" alt="" class="logo">
                 </a>
-                <div class="social">
-                    <a href="#" class="scrollpoint sp-effect3"><i class="fa fa-twitter fa-lg"></i></a>
-                    <a href="#" class="scrollpoint sp-effect3"><i class="fa fa-google-plus fa-lg"></i></a>
-                    <a href="#" class="scrollpoint sp-effect3"><i class="fa fa-facebook fa-lg"></i></a>
-                </div>
                 <div class="rights">
                     <p>Copyright &copy; 2015</p>
                     <p>Vote for GitCrazy - TicForTac</p>

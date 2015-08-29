@@ -22,3 +22,9 @@ text {
 header a > img {
     width: 100px;
 }
+
+.welcome {
+  font-size: 25px;
+  font-weight: 300;
+  margin: 20px 30px;
+}
