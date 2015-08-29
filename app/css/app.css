@@ -41,3 +41,12 @@ header h1 {
   font-size: 50px;
 }
 .center-logo img {margin: 0 10px;}
+
+header .navbar-default.scrolled .navbar-brand h1 {
+  font-size: 25px;
+  padding-left: 0px;
+}
+
+.section-heading {
+  margin: 20px;
+}
