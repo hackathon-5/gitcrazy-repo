@@ -1,7 +1,9 @@
 var _            = require('underscore');
 var config       = require('../config');
 var eventEmitter = require('../events');
-var sql = require('./sql');
+var nano = require('nano')(config.db.url);
+nano.db.create(config.db.name);
+var db = nano.use(config.db.name);
 // var mysql = require('mysql');
 
 module.exports = function(app) {
