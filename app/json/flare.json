@@ -1,0 +1,10 @@
+{
+ "name": "data",
+ "children": [
+  {"name": "Husband", "size": 1},
+  {"name": "DummyData", "size": 0},
+  {"name": "Family", "size": 5},
+  {"name": "Wife", "size": 2},
+  {"name": "Couple", "size": 3}
+ ]
+}
