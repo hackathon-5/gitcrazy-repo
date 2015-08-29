@@ -43,6 +43,10 @@ module.exports = function(app) {
   app.get('*', function(req, res) {
     res.sendfile('./app/index.html');
   });
+
+  app.post('/api/sendText', function(req, res) {
+    res.send(req.body);
+  })
 };
 
 
