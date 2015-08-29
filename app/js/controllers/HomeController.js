@@ -42,19 +42,29 @@ angular.module('HomeController', [])
         node.append("title")
             .text(function(d) { return d.className + ": " + format(d.value); });
 
-        node.append("circle")
-            .attr("r", function(d) { return d.r; })
-            .style("fill", function(d,i) { return color(i); });
+        node.append("a")
+            .attr("href", "#category")
+            .on("click", function(d, i) {
+              $scope.selectedCategory = i;
+              $scope.showEvents();
+            })
+            .append("circle")
+                .attr("r", function(d) { return d.r; })
+                .style("fill", function(d,i) { return color(i); });
+
+        // node.append("circle")
+        //     .attr("r", function(d) { return d.r; })
+        //     .style("fill", function(d,i) { return color(i); });
 
         node.append("text")
             .attr("dy", ".3em")
             .style("text-anchor", "middle")
             .text(function(d) { return d.className.substring(0, d.r / 3); });
 
-        node.on("click", function(d, i) {
-          $scope.selectedCategory = i;
-          $scope.showEvents();
-        });
+        // node.on("click", function(d, i) {
+        //   $scope.selectedCategory = i;
+        //   $scope.showEvents();
+        // });
       });
 
       // Returns a flattened hierarchy containing all leaf nodes under the root.
