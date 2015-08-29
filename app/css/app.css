@@ -10,3 +10,11 @@ text {
     border-top: 1px solid #E5E5E5;
     font-size: 20px;
 }
+
+.body {
+  background-color: rgb(238, 238, 238);
+}
+
+.tp-banner-container {
+  height: 150px !important;
+}

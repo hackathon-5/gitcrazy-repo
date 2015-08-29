@@ -1,5 +1,5 @@
 angular.module('IndexController', [])
-  .controller('IndexController', function($scope, $http){
+  .controller('IndexController', function($scope, $http){    
 
     $scope.test = 'this shit is bomb';
 
@@ -8,5 +8,5 @@ angular.module('IndexController', [])
       // SQLservice.get('123');
     };
 
-    
+
 });
