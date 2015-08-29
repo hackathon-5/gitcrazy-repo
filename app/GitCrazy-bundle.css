@@ -3,6 +3,14 @@ text {
   fill: white !important;
 }
 
+.footer {
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 20px;
+    border-top: 1px solid #E5E5E5;
+    font-size: 20px;
+}
+
 /*!
  * Bootstrap v3.3.5 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.

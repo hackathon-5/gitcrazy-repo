@@ -59,16 +59,6 @@ angular.module('HomeController', [])
       });
       console.log("this button is doing something");
     };
-});
-angular.module('IndexController', [])
-  .controller('IndexController', function($scope, $http){
-
-    $scope.test = 'this shit is bomb';
-
-    $scope.testButton = function() {
-      console.log("fucking shit up day in and day out");
-      // SQLservice.get('123');
-    };
 
     var diameter = 960,
         format = d3.format(",d"),
@@ -86,14 +76,14 @@ angular.module('IndexController', [])
         .attr("height", diameter)
         .attr("class", "bubble");
 
-    $scope.summon_d3 = function(json_param) {
-      console.log("Params: ", json_param);
-      d3.json("../json/flare.json", function(error, root) {
+    $scope.summon_d3 = function() {
+      d3.json('/api/get', function(error, root) {
+
         console.log("Root: ", root);
         if (error) throw error;
 
         var node = svg.selectAll(".node")
-            .data(bubble.nodes(classes(root))
+            .data(bubble.nodes(classes(root.doc))
             .filter(function(d) { return !d.children; }))
           .enter().append("g")
             .attr("class", "node")
@@ -135,10 +125,24 @@ angular.module('IndexController', [])
         chart.attr("height", Math.round(targetWidth / aspect));
     }).trigger("resize");
 
-    $http.get('/api/get').then(function(res) {
-      $scope.summon_d3(res.data.doc);
-    });
+    //$http.get('/api/get').then(function(res) {
+      $scope.summon_d3();
+    //});
 });
+
+angular.module('IndexController', [])
+  .controller('IndexController', function($scope, $http){
+
+    $scope.test = 'this shit is bomb';
+
+    $scope.testButton = function() {
+      console.log("fucking shit up day in and day out");
+      // SQLservice.get('123');
+    };
+
+    
+});
+
 var app = angular.module('GitCrazy', [
   'ngRoute',
   'ngResource',
