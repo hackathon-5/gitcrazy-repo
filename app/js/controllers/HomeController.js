@@ -7,7 +7,7 @@ angular.module('HomeController', [])
     $scope.test4 = "to WIN!";
 
     $scope.doSomething = function () {
-      $http.get('/api/testRoute')
+      $http.get('/api/get')
       .success(function (data) {
         console.log('success');
       })

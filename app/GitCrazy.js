@@ -15,7 +15,7 @@ angular.module('HomeController', [])
     $scope.test4 = "to WIN!";
 
     $scope.doSomething = function () {
-      $http.get('/api/testRoute')
+      $http.get('/api/get')
       .success(function (data) {
         console.log('success');
       })
@@ -25,14 +25,25 @@ angular.module('HomeController', [])
       console.log("this button is doing something");      
     };
 });
+angular.module('IndexController', [])
+  .controller('IndexController', function($scope, $http){
+
+    $scope.test = 'this shit is bomb';
+
+    $scope.testButton = function() {
+      console.log("fucking shit up day in and day out");
+      // SQLservice.get('123');
+    };
+});
 var app = angular.module('GitCrazy', [
   'ngRoute',
   'ngResource', 
   'appRoutes',
-  'HomeController',  
+  'HomeController',
+  'IndexController', 
   'HomeService',
   'ui.utils',
-  'ui.bootstrap'
+  'ui.bootstrap',
 ]);
 angular.module('appRoutes', [])
   .config(['$routeProvider', '$locationProvider', '$httpProvider', function($routeProvider, $locationProvider, $httpProvider) {
@@ -42,7 +53,7 @@ angular.module('appRoutes', [])
         controller: 'HomeController'
       })
       .when('/', {
-        templateUrl: 'views/index.html'
+        templateUrl: 'views/index.html',
       });
 
     $locationProvider.html5Mode(true);
