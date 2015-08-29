@@ -15,14 +15,14 @@ angular.module('HomeController', [])
     $scope.test4 = "to WIN!";
 
     $scope.doSomething = function () {
-      $http.get('/api/get')
+      $http.put('/api/update/1', {id: '2'})
       .success(function (data) {
         console.log('success');
       })
       .error(function (data) {
         console.log('error :' + data);
       });
-      console.log("this button is doing something");      
+      console.log("this button is doing something");
     };
 });
 angular.module('IndexController', [])

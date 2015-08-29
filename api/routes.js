@@ -6,17 +6,29 @@ var sql = require('./sql');
 
 module.exports = function(app) {
 
-  app.post('/api/testRoute', function(req, res) {   
+  app.post('/api/testRoute', function(req, res) {
     res.send(req.body);
   });
 
-  app.get('/api/get', function(req, res) {
+  app.get('/api/get/:id', function(req, res) {
     console.log("sending something from the get");
-    console.log(sql);
-    sql.get();
+    sql.get('req.params.id');
     res.send(req.body);
   });
-  
+
+  app.post('/api/create', function(req, res) {
+    console.log("posting create");
+    // req.body
+    sql.create('params');
+    res.send(req.body);
+  });
+
+  app.put('/api/update/:id', function(req, res){
+    console.log("updating");
+    sql.update('req.params.id');
+    res.send(req.body);
+  });
+
   app.get('*', function(req, res) {
     res.sendfile('./app/index.html');
   });

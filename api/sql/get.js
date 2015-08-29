@@ -1,6 +1,6 @@
 var mysql = require('mysql');
 
-function get() {
+function get(id) {
   console.log("getting shit from the get");
 };
 
