@@ -1,5 +1,5 @@
 angular.module('HomeController', [])
-  .controller('HomeController', function($scope, $http){
+  .controller('HomeController', function($scope, $http, $location){
 
     $scope.test1 = "we";
     $scope.test2 = "are";
@@ -57,6 +57,11 @@ angular.module('HomeController', [])
             .attr("dy", ".3em")
             .style("text-anchor", "middle")
             .text(function(d) { return d.className.substring(0, d.r / 3); });
+
+        node.on("click", function(d, i) {
+          console.log(i);
+          // $location.path("/category/" + i);
+        });
       });
 
       // Returns a flattened hierarchy containing all leaf nodes under the root.
