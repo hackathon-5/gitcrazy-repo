@@ -8,7 +8,6 @@ var flash          = require('connect-flash');
 var morgan         = require('morgan');
 var cookieParser   = require('cookie-parser');
 var bodyParser     = require('body-parser');
-var _              = require('underscore');
 
 app.use(morgan('dev'));
 app.use(cookieParser());
@@ -19,11 +18,11 @@ app.use(session({ secret: 'thisismysecret' }));
 app.use(flash());
 
 app.use(express.static(__dirname + '/app'));
- 
+
 require('./api/routes.js')(app);
 
-app.listen(port);              
-                    
+app.listen(port);
+
 console.log('App running on ' + port);
 
 exports = module.exports = app;

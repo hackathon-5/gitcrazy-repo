@@ -1,9 +1,11 @@
 var app = angular.module('GitCrazy', [
   'ngRoute',
-  'ngResource', 
+  'ngResource',
   'appRoutes',
   'HomeController',
-  'IndexController', 
+  'IndexController',
+  'EventController',
+  'CategoryController',
   'HomeService',
   'ui.utils',
   'ui.bootstrap',

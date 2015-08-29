@@ -1,5 +1,3 @@
-var mysql = require('mysql');
-
 function get(db, id) {
   console.log("getting shit from the get");
   db.get(id, function (err, body) {

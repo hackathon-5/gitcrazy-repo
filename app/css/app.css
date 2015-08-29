@@ -18,3 +18,7 @@ text {
 .tp-banner-container {
   height: 150px !important;
 }
+
+header a > img {
+    width: 100px;
+}

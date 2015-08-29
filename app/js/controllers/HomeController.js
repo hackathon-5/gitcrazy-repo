@@ -1,5 +1,5 @@
 angular.module('HomeController', [])
-  .controller('HomeController', function($scope, $http){
+  .controller('HomeController', function($scope, $http, $location){
 
     var diameter = 960,
         format = d3.format(",d"),
@@ -41,6 +41,11 @@ angular.module('HomeController', [])
             .attr("dy", ".3em")
             .style("text-anchor", "middle")
             .text(function(d) { return d.className.substring(0, d.r / 3); });
+
+        node.on("click", function(d, i) {
+          console.log(i);
+          // $location.path("/category/" + i);
+        });
       });
 
       // Returns a flattened hierarchy containing all leaf nodes under the root.
@@ -84,5 +89,46 @@ angular.module('HomeController', [])
         console.log('error :' + data);
       });
       console.log("this button is doing something");
+    };
+
+    $scope.options = [
+      {name: "Husband", id: 0},
+      {name: "Family", id: 2},
+      {name: "Wife", id: 3},
+      {name: "Couple", id: 4}
+    ];
+    $scope.category = null;
+    $scope.name = '';
+
+    $scope.submit = function() {
+      $http.get('/api/get').then(function(res) {
+        var temp = res.data.doc;
+        console.log("Category: ", $scope.category);
+        temp.category[$scope.category].size += 1;
+        temp.category[$scope.category].events.push({'name': $scope.name, 'value': 1});
+        console.log(temp);
+        $http.put('/api/update', temp)
+          .success(function(data) {
+            angular.forEach(data.category, function(val, key) {
+              angular.forEach(data.category, function(val2, key2) {
+                if (val.size - val2.size > 5) {
+                  console.log("We have a winner!!");
+                  $http.post('/api/sendText', {})
+                    .success(function(data) {
+                      console.log("yeah, we should have sent a text");
+                    })
+                    .error(function(err) {
+                      console.log("err:", err);
+                    })
+                }
+              })
+            })
+            console.log('success');
+            $location.path('/home');
+          })
+          .error(function(data){
+            console.log('error: ' + data);
+          });
+      });
     };
 });
