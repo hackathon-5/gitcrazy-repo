@@ -8,6 +8,10 @@ angular.module('appRoutes', [])
       .when('/', {
         templateUrl: 'views/index.html',
         controller: 'IndexController'
+      })
+      .when('/addEvent', {
+        templateUrl: 'views/addEvent.html',
+        controller: 'EventController'
       });
 
     $locationProvider.html5Mode(true);

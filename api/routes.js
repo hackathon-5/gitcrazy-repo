@@ -30,9 +30,13 @@ module.exports = function(app) {
     res.send(req.body);
   });
 
-  app.put('/api/update/:id', function(req, res){
+  app.put('/api/update', function(req, res){
     console.log("updatingggg");
-    database.update(db, 'req.params.id');
+    console.log(req.body)
+    db.insert(req.body, function(err, body) {
+      if(err){console.log("err: ", err);}
+      console.log("body:", body);
+    });
     res.send(req.body);
   });
 
