@@ -1,6 +1,6 @@
 {
  "name": "data",
- "children": [
+ "category": [
   {"name": "Husband", "size": 1},
   {"name": "DummyData", "size": 0},
   {"name": "Family", "size": 5},

@@ -12,10 +12,15 @@ module.exports = function(app) {
     res.send(req.body);
   });
 
-  app.get('/api/get/:id', function(req, res) {
+  app.get('/api/get', function(req, res) {
     console.log("sending something from the get");
-    database.get(db, 'req.params.id');
-    res.send(req.body);
+    // database.get(db, 'req.params.id');
+    db.list({include_docs: true}, function(err, body) {
+      if (!err) {
+        res.send(body.rows[0]);
+      }
+    });
+    // res.send(req.body);
   });
 
   app.post('/api/create', function(req, res) {
