@@ -19,12 +19,25 @@ text {
   height: 150px !important;
 }
 
-header a > img {
+header a > div > img {
     width: 100px;
 }
 
 .welcome {
   font-size: 25px;
   font-weight: 300;
-  margin: 20px 30px;
+  margin: 25px 35px;
 }
+
+header h1 {
+  font-family: 'Unkempt', cursive;
+}
+
+.center-logo h1 {
+  display: inline;
+  color: #fff;
+  vertical-align: -15%;
+  padding-left: 30px;
+  font-size: 50px;
+}
+.center-logo img {margin: 0 10px;}
