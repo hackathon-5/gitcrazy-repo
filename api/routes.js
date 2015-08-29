@@ -1,10 +1,10 @@
 var _            = require('underscore');
 var config       = require('../config');
 var eventEmitter = require('../events');
+var database = require('./db');
 var nano = require('nano')(config.db.url);
 nano.db.create(config.db.name);
 var db = nano.use(config.db.name);
-// var mysql = require('mysql');
 
 module.exports = function(app) {
 
@@ -14,20 +14,20 @@ module.exports = function(app) {
 
   app.get('/api/get/:id', function(req, res) {
     console.log("sending something from the get");
-    sql.get('req.params.id');
+    database.get(db, 'req.params.id');
     res.send(req.body);
   });
 
   app.post('/api/create', function(req, res) {
     console.log("posting create");
-    // req.body
-    sql.create('params');
+    console.log("req.body:", req.body);
+    database.create(db, req.body);
     res.send(req.body);
   });
 
   app.put('/api/update/:id', function(req, res){
-    console.log("updating");
-    sql.update('req.params.id');
+    console.log("updatingggg");
+    database.update(db, 'req.params.id');
     res.send(req.body);
   });
 

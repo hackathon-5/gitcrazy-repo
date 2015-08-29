@@ -1,6 +1,6 @@
 var mysql = require('mysql');
 
-function update(id) {
+function update(db, id) {
   console.log("updating");
 };
 

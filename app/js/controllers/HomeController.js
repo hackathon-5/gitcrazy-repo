@@ -7,7 +7,7 @@ angular.module('HomeController', [])
     $scope.test4 = "to WIN!";
 
     $scope.doSomething = function () {
-      $http.put('/api/update/1', {id: '2'})
+      $http.post('/api/create', {name: 'bar'})
       .success(function (data) {
         console.log('success');
       })
