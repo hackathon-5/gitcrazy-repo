@@ -1,5 +1,5 @@
 text {
-  font: 20px sans-serif;
+  font: 40px sans-serif;
   fill: white !important;
 }
 
@@ -49,4 +49,8 @@ header .navbar-default.scrolled .navbar-brand h1 {
 
 .section-heading {
   margin: 20px;
+}
+
+.section {
+  padding: 0px;
 }

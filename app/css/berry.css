@@ -1041,6 +1041,9 @@ form .form-control:focus {
   header .navbar-default.scrolled ul.navbar-nav li a:hover {
     color: #cc6698;
   }
+  #chart text {
+    font-size: 40px;
+  }
 }
 
 .pre-loader {
