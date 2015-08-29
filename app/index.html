@@ -91,11 +91,11 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="#/home">graph</a>
+                            <li><a href="#home">graph</a>
                             </li>
-                            <li><a href="#/category">category</a>
+                            <li><a href="#category">category</a>
                             </li>
-                            <li><a href="#/index">events</a>
+                            <li><a href="#index">events</a>
                             </li>
                         </ul>
                     </div>
@@ -149,6 +149,17 @@
                 </div>
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 scrollpoint sp-effect2">
+                      <form role='form'>
+                        <div class='form-group'>
+                          <select class='form-control' name='viewCategorySelect' ng-model="selectedCategory" ng-change="showEvents()">
+                            <option ng-repeat="option in options" value="{{option.id}}">{{option.name}}</option>
+                          </select>
+                        </div>
+
+                        <ul ng-repeat="event in events">
+                          <li>{{event.name}}</li>
+                        </ul>
+                      </form>
                     </div>
                 </div>
             </div>
@@ -163,17 +174,6 @@
                     <p>Add an event to one of your categories!</p>
                 </div>
 
-                <!-- <div> This is a test</div>
-                <label>Select a Category</label>
-
-                <br/>
-                <label>Event Name</label>
-                <input type='text' name='eventName' ng-model="name">
-                <br/>
-
-                <input type="submit" ng-click="submit()"> -->
-
-
                 <div class="row">
                     <div class="col-md-12">
                         <div class="row">
@@ -182,14 +182,9 @@
                                     <div class="form-group">
                                         <!-- <input type="text" class="form-control" placeholder="Your name"> -->
                                         <select name='repeatSelect' ng-model="category" class="form-control">
-                                          <option value="">Select a Category</option>
                                           <option ng-repeat="option in options" value="{{option.id}}">{{option.name}}</option>
                                         </select>
                                     </div>
-                                    <!-- <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="Your email">
-                                        <input type="text" class="form-control" placeholder="Event Name">
-                                    </div> -->
                                     <div class="form-group">
                                         <textarea cols="30" rows="10" class="form-control" placeholder="Event Name" name='eventName' ng-model="name"></textarea>
                                     </div>

@@ -1,6 +1,15 @@
 angular.module('HomeController', [])
   .controller('HomeController', function($scope, $http, $location){
 
+    $scope.selectedCategory = 0;
+
+    $scope.showEvents = function() {
+      $http.get('/api/get').then(function(res) {
+        var temp = res.data.doc;
+        $scope.events = temp.category[$scope.selectedCategory].events
+      });
+    };
+
     var diameter = 960,
         format = d3.format(",d"),
         color = d3.scale.category10();
@@ -20,7 +29,6 @@ angular.module('HomeController', [])
     $scope.summon_d3 = function() {
       d3.json('/api/get', function(error, root) {
 
-        console.log("Root: ", root);
         if (error) throw error;
 
         var node = svg.selectAll(".node")
@@ -43,8 +51,8 @@ angular.module('HomeController', [])
             .text(function(d) { return d.className.substring(0, d.r / 3); });
 
         node.on("click", function(d, i) {
-          console.log(i);
-          // $location.path("/category/" + i);
+          $scope.selectedCategory = i;
+          $scope.showEvents();
         });
       });
 
@@ -71,25 +79,7 @@ angular.module('HomeController', [])
         chart.attr("height", Math.round(targetWidth / aspect));
     }).trigger("resize");
 
-    //$http.get('/api/get').then(function(res) {
-      $scope.summon_d3();
-    //});
-
-    $scope.test1 = "we";
-    $scope.test2 = "are";
-    $scope.test3 = "going";
-    $scope.test4 = "to WIN!";
-
-    $scope.doSomething = function () {
-      $http.post('/api/create', {name: 'bar'})
-      .success(function (data) {
-        console.log('success');
-      })
-      .error(function (data) {
-        console.log('error :' + data);
-      });
-      console.log("this button is doing something");
-    };
+    $scope.summon_d3();
 
     $scope.options = [
       {name: "Husband", id: 0},
@@ -97,7 +87,7 @@ angular.module('HomeController', [])
       {name: "Wife", id: 3},
       {name: "Couple", id: 4}
     ];
-    $scope.category = null;
+    $scope.category = 0;
     $scope.name = '';
 
     $scope.submit = function() {
@@ -114,6 +104,7 @@ angular.module('HomeController', [])
         console.log(temp);
         $http.put('/api/update', temp)
           .success(function(data) {
+            $scope.showEvents();
             angular.forEach(data.category, function(val, key) {
               angular.forEach(data.category, function(val2, key2) {
                 if (val.size - val2.size > 5) {
@@ -129,11 +120,13 @@ angular.module('HomeController', [])
               })
             })
             console.log('success');
-            $location.path('/');
           })
           .error(function(data){
             console.log('error: ' + data);
           });
       });
     };
+
+    $scope.showEvents();
+
 });
