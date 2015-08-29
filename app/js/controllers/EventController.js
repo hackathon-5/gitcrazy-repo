@@ -23,6 +23,13 @@ angular.module('EventController', [])
               angular.forEach(data.category, function(val2, key2) {
                 if (val.size - val2.size > 5) {
                   console.log("We have a winner!!");
+                  $http.post('/api/sendText', {})
+                    .success(function(data) {
+                      console.log("yeah, we should have sent a text");
+                    })
+                    .error(function(err) {
+                      console.log("err:", err);
+                    })
                 }
               })
             })

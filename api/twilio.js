@@ -4,7 +4,7 @@ function sendMessage() {
   client.sendMessage({
     to: '+18034682388',
     from: '+18645015817',
-    body: 'some text here'
+    body: 'make time for your wife bozo'
   }, function(err, res) {
     if(err){console.log("err:", err);}
     console.log("res:", res);
