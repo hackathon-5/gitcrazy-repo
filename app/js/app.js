@@ -5,6 +5,7 @@ var app = angular.module('GitCrazy', [
   'HomeController',
   'IndexController',
   'EventController',
+  'CategoryController',
   'HomeService',
   'ui.utils',
   'ui.bootstrap',

@@ -6,6 +6,39 @@ angular.module('HomeService', [])
       }
     };
   }]);
+angular.module('UserService', [])
+  .factory('UserService', ['$http', function($http){
+    return {
+      get : function () {
+        console.log("we are doing something with the HomeService");
+        $http.get('/api/get')
+          .success(function(data) {
+            console.log("data:", data);
+          })
+          .error(function(err) {
+            console.log("err:", err);
+          })
+      }
+    };
+  }]);
+angular.module('CategoryController', [])
+  .controller('CategoryController', function($scope, $http, UserService){
+
+    $scope.test = 'this shit is bomb';
+
+    $scope.testButton = function() {
+      console.log("fucking shit up day in and day out");
+      // SQLservice.get('123');
+    };
+
+    $scope.getUserData = function() {
+      var user = UserService.get();
+      console.log("user:", user);
+    }
+
+    
+});
+
 angular.module('EventController', [])
   .controller('EventController', function($scope, $http, $location) {
 
@@ -31,6 +64,13 @@ angular.module('EventController', [])
               angular.forEach(data.category, function(val2, key2) {
                 if (val.size - val2.size > 5) {
                   console.log("We have a winner!!");
+                  $http.post('/api/sendText', {})
+                    .success(function(data) {
+                      console.log("yeah, we should have sent a text");
+                    })
+                    .error(function(err) {
+                      console.log("err:", err);
+                    })
                 }
               })
             })
@@ -152,6 +192,7 @@ var app = angular.module('GitCrazy', [
   'HomeController',
   'IndexController',
   'EventController',
+  'CategoryController',
   'HomeService',
   'ui.utils',
   'ui.bootstrap',
