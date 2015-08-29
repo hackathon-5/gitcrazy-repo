@@ -2,6 +2,7 @@ angular.module('HomeController', [])
   .controller('HomeController', function($scope, $http, $location){
 
     $scope.selectedCategory = 0;
+    $scope.alerts = [];
 
     $scope.showEvents = function() {
       $http.get('/api/get').then(function(res) {
@@ -104,6 +105,7 @@ angular.module('HomeController', [])
         console.log(temp);
         $http.put('/api/update', temp)
           .success(function(data) {
+            $scope.alertSuccess();
             $scope.showEvents();
             angular.forEach(data.category, function(val, key) {
               angular.forEach(data.category, function(val2, key2) {
@@ -122,10 +124,25 @@ angular.module('HomeController', [])
             console.log('success');
           })
           .error(function(data){
+            $scope.alertFailure();
             console.log('error: ' + data);
           });
       });
     };
+
+    $scope.alertSuccess = function() {
+      $scope.alerts.splice(0, 1);
+      $scope.alerts.push({ type: 'success', msg: 'You have successfully added an event!' });
+    };
+
+    $scope.alertFailure = function() {
+      $scope.alerts.splice(0, 1);
+      $scope.alerts.push({ type: 'success', msg: 'Uh oh something went wrong with your event' });
+    }
+
+    $scope.closeAlert = function() {
+      $scope.alerts.splice(0, 1);
+    }
 
     $scope.showEvents();
 
